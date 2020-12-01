@@ -855,9 +855,9 @@ VALUES (
 INSERT INTO Certificado_Funcao  (id,descricao,data_de_emissao,nome)
 VALUES (
         0,
-        "Certificado de workshop",
+        "Certificado de oficina",
          VALUES(TO_DATE('05/11/2021', 'DD/MM/YYYY')),
-        "Certificado de conclusão de workshop"
+        "Certificado de conclusão de oficina"
         2 
     );
 
@@ -977,6 +977,7 @@ VALUES (
 /* #2 */
 INSERT INTO Sala  (nome,descricao,capacidade,id,  fk_Local_id)
 VALUES (
+    
         "Auditorio",
          "Auditorio secundario",
     200,
@@ -985,17 +986,834 @@ VALUES (
     );
 
 
+
+
+/* #3 */
+INSERT INTO Sala  (nome,descricao,capacidade,id,  fk_Local_id)
+VALUES (
+    
+        "A-23",
+         "Sala setor a, numero 23",
+    200,
+        1,
+        0 
+    );
+
 /*-------------------------------------------------*/
 /*   Inserindo na tabela Saida_de_dinheiro_Local   */
 /*-------------------------------------------------*/
 
+
+
+
 /* #1 */
-INSERT INTO Saida_de_dinheiro_Local  (nome,descricao,capacidade,id,  fk_Local_id)
+INSERT INTO Saida_de_dinheiro_Local  (descricao, data ,tipo ,id, rua, cidade, estado, cep, numero, complemento,  valor_locacao, fk_Evento_id ,  fk_Pessoa_id )
 VALUES (
-        "Auditorio",
-         "Auditorio central",
-    200,
-        0,
-        0 
+        "Saida de dinheiro referente aos custos de aluguel",
+                 VALUES(TO_DATE('14/11/2021', 'DD/MM/YYYY')),
+                 0,
+                 " Av. Sete de Setembro",
+                 "Manaus",
+                 "AM",
+                 "07886222",
+                 "212",
+                 "",
+                 500.00,
+                 0,
+                 1
     );
 
+
+
+/* #2 */
+INSERT INTO Saida_de_dinheiro_Local  (descricao, data ,tipo ,id, rua, cidade, estado, cep, numero, complemento,  valor_locacao, fk_Evento_id ,  fk_Pessoa_id )
+VALUES (
+        "Saida de dinheiro referente aos custos de aluguel",
+                 VALUES(TO_DATE('15/11/2021', 'DD/MM/YYYY')),
+                 0,
+                 "Av. São Pedro",
+                 "Manaus",
+                 "AM",
+                 "07886333",
+                 "214",
+                 "",
+                 1500.00,
+                 1,
+                 2
+    );
+
+
+
+
+/* #3 */
+INSERT INTO Saida_de_dinheiro_Local  (descricao, data ,tipo ,id, rua, cidade, estado, cep, numero, complemento,  valor_locacao, fk_Evento_id ,  fk_Pessoa_id )
+VALUES (
+        "Saida de dinheiro referente aos custos de aluguel",
+                 VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+                 0,
+                 "Av Machado de Assis",
+                 "Manaus",
+                 "AM",
+                 "07886222",
+                 "216",
+                 "",
+                 50.00,
+                 0,
+                 1
+    );
+
+
+
+/*-------------------------------------------------*/
+/*   Inserindo na tabela Loja                      */
+/*-------------------------------------------------*/
+
+/* #1 */
+INSERT INTO Loja(nome, descricao, id, fk_Sala_id )
+VALUES (
+        "Venda livros workshop",
+        "Venda dos livros usados no workshop",
+        0,
+        0         
+    );
+
+
+/* #2 */
+INSERT INTO Loja(nome, descricao, id, fk_Sala_id )
+VALUES (
+        "Venda materiais oficina",
+        "Venda dos materiais usados na oficina",
+        1,
+        0         
+    );
+
+
+/* #3 */
+INSERT INTO Loja(nome, descricao, id, fk_Sala_id )
+VALUES (
+        "Venda de produtos relacionados  a marca",
+        "Venda de produtos relacionados a marca que organizou o evento",
+        2,
+        1         
+    );
+
+
+
+/*-------------------------------------------------*/
+/*   Inserindo na tabela produtos                  */
+/*-------------------------------------------------*/
+
+/* #1 */
+INSERT INTO produtos(nome, quantidade, descricao, preco, id , fk_Saida_de_dinheiro_Local_id, fk_Loja_id , fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+        "Estruturas de dados complexas em pascal",
+        10,
+        "Livro Estruturas de dados complexas em pascal"
+        110,
+        0,
+        1,
+        2         
+    );
+
+
+/* #2 */
+INSERT INTO produtos(nome, quantidade, descricao, preco, id , fk_Saida_de_dinheiro_Local_id, fk_Loja_id , fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+        "Pelucia elefante php",
+        1000,
+        "Elefante de pelucia php"
+        110,
+        2,
+        2,
+        1         
+    );
+
+    /* #3 */
+INSERT INTO produtos(nome, quantidade, descricao, preco, id , fk_Saida_de_dinheiro_Local_id, fk_Loja_id , fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+        "Sapiens",
+        23,
+        "Livro Sapiens"
+        13,
+        3,
+        2,
+        1         
+    );
+
+
+        /* #4 */
+INSERT INTO produtos(nome, quantidade, descricao, preco, id , fk_Saida_de_dinheiro_Local_id, fk_Loja_id , fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+        "A origem das especies",
+        24,
+        "Livro A origem das especies"
+        11,
+        4,
+        2,
+        1         
+    );
+
+
+            /* #5 */
+INSERT INTO produtos(nome, quantidade, descricao, preco, id , fk_Saida_de_dinheiro_Local_id, fk_Loja_id , fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+        "Curso em dvd aprenda cobol",
+        2,
+        "Conjunto de dvds curso em dvd aprenda cobol "
+        14,
+        5,
+        1,
+        2         
+    );
+
+
+
+/*---------------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Venda_Participante_Ingresso_Entrada_de_dinheiro                 */
+/*---------------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Venda_Participante_Ingresso_Entrada_de_dinheiro (data, valor_total, id ,fk_Loja_id, nome, telefone, email, estado, rua, cidade, cep, numero, complemento,  fk_cargos_cargos_PK , fk_Evento_id ,
+    data_de_compra,  fk_Tipo_de_ingresso_id , valor , descricao ,  tipo
+ )
+VALUES (
+         VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        100,
+        0,
+        1,
+        "Ricardo Pedro"
+        "(11)98888-1111",
+        "fakemail1@mail.com",
+        "SP",
+        "Rua Pedro Cabral",
+        "Aparecida do norte",
+        "09882777",
+        "123",
+        "",
+        0,
+        VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        0,
+        100,
+        "Venda ingresso ???",
+        "Ingresso"
+    );
+
+
+
+/* #2 */
+INSERT INTO Venda_Participante_Ingresso_Entrada_de_dinheiro (data, valor_total, id ,fk_Loja_id, nome, telefone, email, estado, rua, cidade, cep, numero, complemento,  fk_cargos_cargos_PK , fk_Evento_id ,
+    data_de_compra,  fk_Tipo_de_ingresso_id , valor , descricao ,  tipo
+ )
+VALUES (
+         VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        110,
+        1,
+        1,
+        "Ricardo Marcio"
+        "(11)98888-1122",
+        "fakemail2@mail.com",
+        "SP",
+        "Rua Pedro Cabral",
+        "Aparecida do norte",
+        "09882777",
+        "139",
+        "",
+        0,
+        VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        0,
+        130,
+        "Venda ingresso ???",
+        "Ingresso"
+    );
+
+
+
+/* #3 */
+INSERT INTO Venda_Participante_Ingresso_Entrada_de_dinheiro (data, valor_total, id ,fk_Loja_id, nome, telefone, email, estado, rua, cidade, cep, numero, complemento,  fk_cargos_cargos_PK , fk_Evento_id ,
+    data_de_compra,  fk_Tipo_de_ingresso_id , valor , descricao ,  tipo
+ )
+VALUES (
+         VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        100,
+        2,
+        1,
+        "Pedro Amorin"
+        "(11)98888-1211",
+        "fakemail2@mail.com",
+        "SP",
+        "Rua Garcia Lopes",
+        "Aparecida do norte",
+        "09882777",
+        "223",
+        "",
+        0,
+        VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        0,
+        1010,
+        "Venda ingresso ???",
+        "Ingresso"
+    );
+
+
+
+    /* #4 */
+INSERT INTO Venda_Participante_Ingresso_Entrada_de_dinheiro (data, valor_total, id ,fk_Loja_id, nome, telefone, email, estado, rua, cidade, cep, numero, complemento,  fk_cargos_cargos_PK , fk_Evento_id ,
+    data_de_compra,  fk_Tipo_de_ingresso_id , valor , descricao ,  tipo
+ )
+VALUES (
+         VALUES(TO_DATE('22/11/2021', 'DD/MM/YYYY')),
+        90,
+        3,
+        1,
+        "Pedro Augusto"
+        "(11)98888-8811",
+        "fakemail3@mail.com",
+        "SP",
+        "Rua Garcia Lopes",
+        "Aparecida do norte",
+        "01282777",
+        "229",
+        "",
+        0,
+        VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        0,
+        90,
+        "Venda ingresso ???",
+        "Ingresso"
+    );
+
+
+
+
+    /* #5 */
+INSERT INTO Venda_Participante_Ingresso_Entrada_de_dinheiro (data, valor_total, id ,fk_Loja_id, nome, telefone, email, estado, rua, cidade, cep, numero, complemento,  fk_cargos_cargos_PK , fk_Evento_id ,
+    data_de_compra,  fk_Tipo_de_ingresso_id , valor , descricao ,  tipo
+ )
+VALUES (
+         VALUES(TO_DATE('22/11/2021', 'DD/MM/YYYY')),
+        123,
+        4,
+        1,
+        "Pedro Heleno"
+        "(11)98812-8811",
+        "fakemail4@mail.com",
+        "SP",
+        "Rua Garcia Lopes",
+        "Aparecida do norte",
+        "01282777",
+        "339",
+        "",
+        0,
+        VALUES(TO_DATE('19/11/2021', 'DD/MM/YYYY')),
+        0,
+        90,
+        "Venda ingresso ???",
+        "Ingresso"
+    );
+
+
+
+
+/*--------------------------------------------*/
+/*   Inserindo na tabela regras               */
+/*--------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO regras (regras_PK , regras)
+VALUES (
+         0,
+         "Primeira regra",
+    );
+
+
+/* #2 */
+INSERT INTO regras (regras_PK , regras)
+VALUES (
+         1,
+         "Segunda regra",
+    );
+
+
+/* #3 */
+INSERT INTO regras (regras_PK , regras)
+VALUES (
+         2,
+         "Terceira regra",
+    );
+
+/* #4 */
+INSERT INTO regras (regras_PK , regras)
+VALUES (
+         3,
+         "Quarta regra",
+    );   
+
+/* #5 */
+INSERT INTO regras (regras_PK , regras)
+VALUES (
+         4,
+         "Quinta regra",
+    );     
+
+
+
+
+/*--------------------------------------------*/
+/*   Inserindo na tabela premiação            */
+/*--------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO premiação (regras_PK , regras)
+VALUES (
+         0,
+         "Premiação com trofeu",
+    );
+
+/* #2 */
+INSERT INTO premiação (regras_PK , regras)
+VALUES (
+         0,
+         "Premiação com trofeu em dinheiro",
+    );
+/* #3 */
+INSERT INTO premiação (regras_PK , regras)
+VALUES (
+         0,
+         "Premiação com atribuição de titulo",
+    );
+
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela cargos                                                    */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO  cargos(Cargos_PK , cargos)
+VALUES (
+         0,
+         1
+    );
+
+
+/* #2 */
+INSERT INTO  cargos(Cargos_PK , cargos)
+VALUES (
+         1,
+         1
+    );
+
+/* #3 */
+INSERT INTO  cargos(Cargos_PK , cargos)
+VALUES (
+         2,
+         1
+    );
+
+/* #4 */
+INSERT INTO  cargos(Cargos_PK , cargos)
+VALUES (
+         3,
+         1
+    );
+
+/* #5 */
+INSERT INTO  cargos(Cargos_PK , cargos)
+VALUES (
+         0,
+         2
+    );
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Patrocina_Entidade_Evento_Entrada_de_dinheiro             */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO  cargos(  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         1,
+         2,
+    );
+
+/* #2 */
+INSERT INTO  cargos(  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         1,
+         2,
+    );
+
+
+/* #3 */
+INSERT INTO  cargos(  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         2,
+         1,
+         2,
+    );
+
+
+/* #4 */
+INSERT INTO  cargos(  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         3,
+         1,
+         2,
+    );
+
+
+/* #5 */
+INSERT INTO  cargos(  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         4,
+         1,
+         2,
+    );
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Patrocina_Entidade_Evento_Entrada_de_dinheiro             */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Patrocina_Entidade_Evento_Entrada_de_dinheiro (  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         1,
+         2,
+    );
+
+
+/* #2 */
+INSERT INTO Patrocina_Entidade_Evento_Entrada_de_dinheiro (  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         2,
+         1,
+    );
+
+/* #3 */
+INSERT INTO Patrocina_Entidade_Evento_Entrada_de_dinheiro (  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         2,
+         1,
+         3,
+    );
+
+/* #4 */
+INSERT INTO Patrocina_Entidade_Evento_Entrada_de_dinheiro (  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         3,
+         1,
+         2,
+    );
+
+/* #5 */
+INSERT INTO Patrocina_Entidade_Evento_Entrada_de_dinheiro (  fk_Entidade_id ,  fk_Evento_id , fk_Entrada_de_dinheiro_id )
+VALUES (
+         4,
+         1,
+         2,
+    );
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Possui                                                    */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Possui   ( fk_Desconto_id ,fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         1,
+
+    );
+
+
+
+/* #2 */
+INSERT INTO Possui   ( fk_Desconto_id ,fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         2,
+
+    );
+
+
+
+/* #3 */
+INSERT INTO Possui   ( fk_Desconto_id ,fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         1,
+
+    );
+
+
+/* #4 */
+INSERT INTO Possui   ( fk_Desconto_id ,fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         2,
+         1,
+
+    );
+
+
+/* #5 */
+INSERT INTO Possui   ( fk_Desconto_id ,fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         0,
+
+    );
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Possui                                                    */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Exerce(fk_Funcao_id ,fk_Pessoa_id)
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Exerce(fk_Funcao_id ,fk_Pessoa_id)
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Exerce(fk_Funcao_id ,fk_Pessoa_id)
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Ganha                                                    */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Ganha(fk_Pessoa_id ,fk_Certificado_Funcao_id )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Ganha(fk_Pessoa_id ,fk_Certificado_Funcao_id )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Ganha(fk_Pessoa_id ,fk_Certificado_Funcao_id )
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Trabalha                                                  */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Trabalha(    fk_Atividades_id  ,  fk_Pessoa_id )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Trabakha(    fk_Atividades_id  ,  fk_Pessoa_id )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Trabalha(    fk_Atividades_id ,  fk_Pessoa_id)
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Atende                                                    */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Atende  (    fk_Atividades_id   ,     fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Atende  (    fk_Atividades_id  ,    fk_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Atende  (    fk_Atividades_id ,     fk_Participante_Ingresso_Entrada_de_dinheiro_id)
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Promove                                                   */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Promove (        fk_Entidade_id ,      fk_Atividades_id  )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Promove (        fk_Entidade_id ,     fk_Atividades_id  )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Promove (        fk_Entidade_id,      fk_Atividades_id )
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+
+   /*---------------------------------------------------------------------------------*/
+/*   Inserindo na tabela Apresentado                                                 */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Apresentado (        fk_Entidade_id ,      fk_Atividades_id  )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO Apresentado(        fk_Entidade_id ,     fk_Atividades_id  )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO Apresentado(        fk_Entidade_id,      fk_Atividades_id )
+VALUES (
+         2,
+         1,
+
+    );
+   
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*     Paga                                                                        */
+/*---------------------------------------------------------------------------------*/
+
+
+
+/* #1 */
+INSERT INTO Paga  (         fk_Participante_Ingresso_Entrada_de_dinheiro_id  ,      fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         0,
+         1,
+
+    );
+
+/* #2 */
+INSERT INTO  Paga (        fk_Participante_Ingresso_Entrada_de_dinheiro_id  ,     fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         1,
+         1,
+
+    );
+
+ 
+/* #3 */
+INSERT INTO  Paga (       fk_Participante_Ingresso_Entrada_de_dinheiro_id ,      fk_Venda_Participante_Ingresso_Entrada_de_dinheiro_id )
+VALUES (
+         2,
+         1,
+
+    );
+   
